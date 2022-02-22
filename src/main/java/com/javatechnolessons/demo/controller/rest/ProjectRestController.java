@@ -27,5 +27,24 @@ public class ProjectRestController {
         return projectService.get(id);
     }
 
-    
+    @GetMapping("/all")
+    public List<ProjectDTO> getAllProjects(){
+        return projectService.getAll();
+    }
+
+    @PostMapping("/new")
+    ProjectDTO newProject(@RequestBody ProjectDTO newProject) {
+      return projectService.save(newProject);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteProject(@PathVariable("id") Long id){
+      projectService.delete(id);
+    }
+
+    @PutMapping("/update")
+    public ProjectDTO updateProject(@RequestBody ProjectDTO updatedProject){
+      return projectService.save(updatedProject);
+    }
+
 }

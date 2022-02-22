@@ -27,5 +27,23 @@ public class RoleRestController {
         return roleService.get(id);
     }
 
-    
+    @GetMapping("/all")
+    public List<RoleDTO> getAllRoles(){
+        return roleService.getAll();
+    }
+
+    @PostMapping("/new")
+    RoleDTO newRole(@RequestBody RoleDTO newRole) {
+      return roleService.save(newRole);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteRole(@PathVariable("id") Long id){
+      roleService.delete(id);
+    }
+
+    @PutMapping("/update")
+    public RoleDTO updateRole(@RequestBody RoleDTO updatedRole){
+      return roleService.save(updatedRole);
+    }
 }

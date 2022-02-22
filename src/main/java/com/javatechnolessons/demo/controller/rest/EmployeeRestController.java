@@ -26,6 +26,26 @@ public class EmployeeRestController {
     public EmployeeDTO getEmployee(@PathVariable("id") Long id){
         return employeeService.get(id);
     }
+    
+    @GetMapping("/all")
+    public List<EmployeeDTO> getAll(){
+        return employeeService.getAll();
+    }
+
+    @PostMapping("/new")
+    public EmployeeDTO newEmployee(@RequestBody EmployeeDTO employee){
+        return employeeService.save(employee);
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public void deleteEmployee(@PathVariable("id") Long id){
+        employeeService.delete(id);
+    }
+
+    @PutMapping("/update")
+    public EmployeeDTO updateEmployee(@RequestBody EmployeeDTO employee){
+        return employeeService.save(employee);
+    }
 
     
     /*http://localhost:8080/api/employees/99 (method GET) -> get employee with id=99
